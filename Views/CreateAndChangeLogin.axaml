@@ -5,5 +5,17 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="AvaloniaProject1pw.CreateAndChangeLogin"
         Title="CreateAndChangeLogin">
-  Welcome to Avalonia!
+	<Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" Margin="10">
+		<TextBlock Text="Username: " Grid.Row="1"/>
+		<TextBox Grid.Row="2" Name="UsernameTB"/>
+
+		<TextBlock Text="Password: " Grid.Row="3"/>
+		<TextBox Grid.Row="4" Name="PasswordTB"/>
+
+		<TextBlock Text="Userid: " Grid.Row="5"/>
+		<TextBox Grid.Row="6" Name="UserIdTB"/>
+
+		<Button Content="Add" Click="AddButton_Click" Grid.Row="7" />
+		
+	</Grid>
 </Window>
