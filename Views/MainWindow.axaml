@@ -16,7 +16,7 @@
 				<DataGridTextColumn Header="Desctiption" Binding="{Binding Description}"/>
 			</DataGrid.Columns>
 		</DataGrid>
-		<Button Content="Добавление" Grid.Row="1" Click="Button_Click"/>
+		<Button Content="Add" Grid.Row="1" Click="Button_Click"/>
 		<Button Content="Login" Grid.Row="1" Grid.Column="5" Click="Button_Click_1"/>
 	</Grid>
 </Window>

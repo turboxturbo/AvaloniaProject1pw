@@ -36,21 +36,23 @@ public partial class CreateAndChangeUser : Window
             thisUser.PhoneNumber = PhoneNumberText.Text;
             thisUser.Description = DescriptionText.Text;
             thisUser.FullName = FullNameText.Text;
+            App.DbContext.SaveChanges();
         }
         else
         {
+            
             var newUser = new User()
             {
                 FullName = FullNameText.Text,
                 Description = DescriptionText.Text,
                 PhoneNumber = PhoneNumberText.Text,
-                
             };
             App.DbContext.Users.Add(newUser);
             App.DbContext.SaveChanges();
             //newUser.IdUser 
         }
         
+
         this.Close();
     }
 }

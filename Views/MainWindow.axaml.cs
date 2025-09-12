@@ -42,9 +42,13 @@ namespace AvaloniaProject1pw.Views
             viewModel.RefreshData();
         }
 
-        private void Button_Click_1(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private async void Button_Click_1(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            
+            var createAndChangeUserWindow = new CreateAndChangeLogin();
+            await createAndChangeUserWindow.ShowDialog(this);
+
+            var viewModel = DataContext as MainWindowViewModel;
+            viewModel.RefreshData();
         }
     }
 }
