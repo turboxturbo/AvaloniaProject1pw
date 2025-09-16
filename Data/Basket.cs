@@ -3,15 +3,15 @@ using System.Collections.Generic;
 
 namespace AvaloniaProject1pw.Data;
 
-public partial class Login
+public partial class Basket
 {
-    public int IdLogin { get; set; }
+    public int IdBasket { get; set; }
 
-    public string? Login1 { get; set; }
-
-    public string? Password { get; set; }
+    public int? IdItem { get; set; }
 
     public int? IdUser { get; set; }
+
+    public virtual Item? IdItemNavigation { get; set; }
 
     public virtual User? IdUserNavigation { get; set; }
 }
