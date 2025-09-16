@@ -17,6 +17,8 @@ public partial class CreateAndChangeUser : Window
 
         if (UserVariableData.seletedUserInMainWindow == null) return;
         FullNameText.Text = UserVariableData.seletedUserInMainWindow.FullName;
+        //LoginText.Text = UserVariableData.seletedUserInMainWindow.Login;
+        //PasswordText.Text = UserVariableData.seletedUserInMainWindow.Password;
         DescriptionText.Text = UserVariableData.seletedUserInMainWindow.Description;
         PhoneNumberText.Text = UserVariableData.seletedUserInMainWindow.PhoneNumber;
         ComboUsers.SelectedItem = UserVariableData.seletedUserInMainWindow;

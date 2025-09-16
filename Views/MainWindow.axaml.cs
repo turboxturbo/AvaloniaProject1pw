@@ -50,5 +50,16 @@ namespace AvaloniaProject1pw.Views
             var viewModel = DataContext as MainWindowViewModel;
             viewModel.RefreshData();
         }
+
+        private void Button_Click_2(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            var selectedUser = MainDataGridUsers.SelectedItem as User;
+            if (selectedUser != null)
+            {
+                selectedUser = null;
+                var viewModel = DataContext as MainWindowViewModel;
+                viewModel.RefreshData();
+            }
+        }
     }
 }
