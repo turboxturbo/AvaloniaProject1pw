@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AvaloniaProject1pw.Models
+namespace AvaloniaProject1pw.ViewModels
 {
-    internal class LoginVariableData
+    internal class LoginViewModel
     {
     }
 }
