@@ -38,7 +38,7 @@ public partial class CreateAndChangeLogin : Window
 
             if (int.TryParse(userIdInput, out int userId))
             {
-                newLogin.UserId = userId;
+                newLogin.IdUser = userId;
             }
         }
 

@@ -16,7 +16,7 @@ namespace AvaloniaProject1pw.Views
             DataContext = new MainWindowViewModel();
         }
 
-        private async void DataGrid_DoubleTapped(object? sender, Avalonia.Input.TappedEventArgs e)
+        private async void DataGrid_DoubleTapped(object? sender, Avalonia.Input.TappedEventArgs e) // change
         {
             var selectedUser = MainDataGridUsers.SelectedItem as User;
 
@@ -31,7 +31,7 @@ namespace AvaloniaProject1pw.Views
             viewModel.RefreshData();
         }
 
-        private async void Button_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private async void Button_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e) //add
         {
             UserVariableData.seletedUserInMainWindow = null;
 
@@ -42,7 +42,7 @@ namespace AvaloniaProject1pw.Views
             viewModel.RefreshData();
         }
 
-        private async void Button_Click_1(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private async void Button_Click_1(object? sender, Avalonia.Interactivity.RoutedEventArgs e) //login
         {
             var createAndChangeUserWindow = new CreateAndChangeLogin();
             await createAndChangeUserWindow.ShowDialog(this);
@@ -51,14 +51,15 @@ namespace AvaloniaProject1pw.Views
             viewModel.RefreshData();
         }
 
-        private void Button_Click_2(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private async void Button_Click_2(object? sender, Avalonia.Interactivity.RoutedEventArgs e) // delete
         {
             var selectedUser = MainDataGridUsers.SelectedItem as User;
             if (selectedUser != null)
             {
+                UserVariableData.seletedUserInMainWindow = selectedUser;
                 selectedUser = null;
-                var viewModel = DataContext as MainWindowViewModel;
-                viewModel.RefreshData();
+                var viewModel = DataContext as MainWindowViewModel; 
+                viewModel.RefreshData(); // обновление бд
             }
         }
     }

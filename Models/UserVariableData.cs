@@ -10,6 +10,6 @@ namespace AvaloniaProject1pw.Models
     static class UserVariableData
     {
         public static User seletedUserInMainWindow { get; set; }
-        public static Login selectedLogin {  get; set; }
+        
     }
 }

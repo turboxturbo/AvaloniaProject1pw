@@ -8,18 +8,21 @@
         Title="AvaloniaProject1pw">
 	<Grid RowDefinitions="*, Auto" ColumnDefinitions="*, Auto">
 		
-		<DataGrid ItemsSource="{Binding Logins}" IsReadOnly="True" DoubleTapped="DataGrid_DoubleTapped" Name="MainDataGridUsers" Grid.Row="0">
+		<DataGrid ItemsSource="{Binding Users}" IsReadOnly="True" DoubleTapped="DataGrid_DoubleTapped" Name="MainDataGridUsers" Grid.Row="0">
 			<DataGrid.Columns>
-				<DataGridTextColumn Header="Full Name" Binding="{Binding Users.FullName}"/>
-				<DataGridTextColumn Header="Phone Number" Binding="{Binding Users.PhoneNumber}"/>
-				<DataGridTextColumn Header="Desctiption" Binding="{Binding Users.Description}"/>
+				<DataGridTextColumn Header="Full Name" Binding="{Binding FullName}"/>
+				<DataGridTextColumn Header="Phone Number" Binding="{Binding PhoneNumber}"/>
+				<DataGridTextColumn Header="Desctiption" Binding="{Binding Description}"/>
 				<DataGridTextColumn Header="Login" Binding="{Binding Login1}"/>
 				<DataGridTextColumn Header="Password" Binding="{Binding Password}"/>
 			</DataGrid.Columns>
 		</DataGrid>
 		
 		<Button Content="Add" Grid.Row="1" Click="Button_Click"/>
-		<Button Content="Login" Grid.Row="1" Grid.Column="5" Click="Button_Click_1"/>
-		<Button Content="Del" Grid.Row="1" Grid.Column="1" Click="Button_Click_2"/>
+		<StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+			<Button Content="Login"  Click="Button_Click_1" HorizontalAlignment="Right"/>
+			<Button Content="Del"  Click="Button_Click_2" HorizontalAlignment="Left"/>
+		</StackPanel>
+		
 	</Grid>
 </Window>
