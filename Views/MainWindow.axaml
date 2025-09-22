@@ -15,6 +15,7 @@
 				<DataGridTextColumn Header="Desctiption" Binding="{Binding Description}"/>
 				<DataGridTextColumn Header="Login" Binding="{Binding Login1}"/>
 				<DataGridTextColumn Header="Password" Binding="{Binding Password}"/>
+				<DataGridTextColumn Header="Role" Binding="{Binding NameRole}"/>
 			</DataGrid.Columns>
 		</DataGrid>
 		

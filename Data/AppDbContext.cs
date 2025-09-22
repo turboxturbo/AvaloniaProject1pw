@@ -27,7 +27,7 @@ public partial class AppDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=sql-ser-larisa\\serv1215;Database=TestAvalonia;Trusted_Connection=True;Encrypt=True;TrustServerCertificate=True;");
+        => optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=TestAvalonia;Trusted_Connection=True;Encrypt=True;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -39,9 +39,9 @@ public partial class AppDbContext : DbContext
 
             entity.Property(e => e.IdBasket)
                 .ValueGeneratedNever()
-                .HasColumnName("id_Basket");
-            entity.Property(e => e.IdItem).HasColumnName("id_Item");
-            entity.Property(e => e.IdUser).HasColumnName("id_User");
+                .HasColumnName("Id_Basket");
+            entity.Property(e => e.IdItem).HasColumnName("Id_Item");
+            entity.Property(e => e.IdUser).HasColumnName("Id_User");
 
             entity.HasOne(d => d.IdItemNavigation).WithMany(p => p.Baskets)
                 .HasForeignKey(d => d.IdItem)
@@ -49,7 +49,7 @@ public partial class AppDbContext : DbContext
 
             entity.HasOne(d => d.IdUserNavigation).WithMany(p => p.Baskets)
                 .HasForeignKey(d => d.IdUser)
-                .HasConstraintName("FK_Basket_Users");
+                .HasConstraintName("FK_Basket_User");
         });
 
         modelBuilder.Entity<Item>(entity =>
@@ -60,17 +60,19 @@ public partial class AppDbContext : DbContext
 
             entity.Property(e => e.IdItem)
                 .ValueGeneratedNever()
-                .HasColumnName("id_Item");
+                .HasColumnName("Id_Item");
             entity.Property(e => e.Description).HasColumnType("text");
             entity.Property(e => e.NameItem).HasColumnType("text");
         });
 
         modelBuilder.Entity<Login>(entity =>
         {
-            entity.HasKey(e => e.IdLogin);
+            entity.HasKey(e => e.IdLogin).HasName("PK__Login__897D1C67DE596C86");
+
+            entity.ToTable("Login");
 
             entity.Property(e => e.IdLogin).HasColumnName("id_Login");
-            entity.Property(e => e.IdUser).HasColumnName("id-User");
+            entity.Property(e => e.IdUser).HasColumnName("id_User");
             entity.Property(e => e.Login1)
                 .HasColumnType("text")
                 .HasColumnName("Login");
@@ -78,24 +80,25 @@ public partial class AppDbContext : DbContext
 
             entity.HasOne(d => d.IdUserNavigation).WithMany(p => p.Logins)
                 .HasForeignKey(d => d.IdUser)
-                .HasConstraintName("FK_Logins_Users1");
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Login_User");
         });
 
         modelBuilder.Entity<Role>(entity =>
         {
-            entity.HasKey(e => e.IdRole);
+            entity.HasKey(e => e.IdRole).HasName("PK__Role__5E5EB16B5D5E2A94");
 
             entity.ToTable("Role");
 
             entity.Property(e => e.IdRole).HasColumnName("id_Role");
-            entity.Property(e => e.NameRole)
-                .HasColumnType("text")
-                .HasColumnName("Name_Role");
+            entity.Property(e => e.NameRole).HasColumnType("text");
         });
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.IdUser);
+            entity.HasKey(e => e.IdUser).HasName("PK__User__55649556D0B2DEC7");
+
+            entity.ToTable("User");
 
             entity.Property(e => e.IdUser).HasColumnName("id_User");
             entity.Property(e => e.Description).HasColumnType("text");
@@ -105,7 +108,8 @@ public partial class AppDbContext : DbContext
 
             entity.HasOne(d => d.IdRoleNavigation).WithMany(p => p.Users)
                 .HasForeignKey(d => d.IdRole)
-                .HasConstraintName("FK_Users_Role");
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_user_role");
         });
 
         OnModelCreatingPartial(modelBuilder);

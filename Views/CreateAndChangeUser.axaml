@@ -7,7 +7,7 @@
 		x:DataType="vm:MainWindowViewModel"
 		xmlns:vm="using:AvaloniaProject1pw.ViewModels"
         Title="CreateAndChangeUser">
-	<Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" Margin="10">
+	<Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, 60, Auto, Auto, Auto" Margin="10" ColumnDefinitions="*, *">
 		<TextBlock Text="ФИО:" Grid.Row="0"/>
 		<TextBox Grid.Row="2" Name="FullNameText"/>
 		
@@ -15,10 +15,10 @@
 		<TextBox Grid.Row="4" Name="PhoneNumberText"/>
 		
 		<TextBlock Text="Описание:" Grid.Row="5"/>
-		<TextBox Grid.Row="6" Name="DescriptionText"/>
+		<TextBox Grid.Row="6" Name="DescriptionText" Grid.RowSpan="2" TextWrapping="Wrap" MaxLength="100"/>
 		
-		<TextBlock Text="Пользователь:" Grid.Row="7"/>
-		<ComboBox ItemsSource="{Binding Users}" Width="200" Grid.Row="8" Name="ComboUsers">
+		<TextBlock Text="Пользователь:" Grid.Row="0" Grid.Column="1" Margin="10 0"/>
+		<ComboBox ItemsSource="{Binding Users}" Width="200" Grid.Row="2" Grid.Column="1" Name="ComboUsers" Margin="10 0">
 			<ComboBox.ItemTemplate>
 				<DataTemplate>
 					<TextBlock Text="{Binding FullName}" FontWeight="Bold"/>
@@ -26,8 +26,20 @@
 			</ComboBox.ItemTemplate>
 		</ComboBox>
 		
+		<TextBlock Text="Пароль" Grid.Row="3" Grid.Column="1" Margin="10 0"/>
+		<TextBox Grid.Row="4" Name="PasswordText" Grid.Column="1" Margin="10 0"/>
+
+		<TextBlock Text="Роль:" Grid.Row="5" Grid.Column="1" Margin="10 0"/>
+		<ComboBox ItemsSource="{Binding Roles}" Width="200" Grid.Row="6" Grid.Column="1" Name="ComboRoles" Margin="10 0">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<TextBlock Text="{Binding NameRole}" FontWeight="Bold"/>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+		
 		<Button Content="Save"
-              Margin="10" Grid.Row="9" HorizontalAlignment="Right" Click="Button_Click"/>
+              Margin="10" Grid.Row="9" HorizontalAlignment="Right" Click="Button_Click" Grid.Column="1"/>
 	</Grid>
 </Window>
 
