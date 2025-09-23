@@ -31,10 +31,4 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Views\ItemUserControl.axaml.cs">
-      <DependentUpon>ItemUserControl.axaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
 </Project>

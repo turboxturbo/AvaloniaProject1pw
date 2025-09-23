@@ -6,7 +6,12 @@
         x:Class="AvaloniaProject1pw.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="AvaloniaProject1pw">
-	<Grid RowDefinitions="*, Auto" ColumnDefinitions="*, Auto">
+	<Grid RowDefinitions="*, Auto, *" ColumnDefinitions="*, Auto, *">
+		<StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
+			<Button Content="Basket" HorizontalAlignment="Right" Click="Button_Click_3"/>
+			<Button Content="Item"   HorizontalAlignment="Left" Click="Button_Click_4"/>
+			<Button Content="User"   HorizontalAlignment="Left" Click="Button_Click_5"/>
+		</StackPanel>
 		
 		<DataGrid ItemsSource="{Binding Users}" IsReadOnly="True" DoubleTapped="DataGrid_DoubleTapped" Name="MainDataGridUsers" Grid.Row="0">
 			<DataGrid.Columns>

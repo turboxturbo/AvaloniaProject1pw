@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace AvaloniaProject1pw;
 
-public partial class Basket : UserControl
+public partial class Users : UserControl
 {
-    public Basket()
+    public Users()
     {
         InitializeComponent();
     }

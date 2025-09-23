@@ -1,9 +1,26 @@
-<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="AvaloniaProject1pw.Basket"
-        Title="Basket">
-  Welcome to Avalonia!
-</Window>
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaProject1pw.Basket">
+	<Grid RowDefinitions="*,Auto" ColumnDefinitions="*">
+		<DataGrid Grid.Row="0"
+                 ItemsSource="{Binding Baskets}"
+                 IsReadOnly="True"
+                 DoubleTapped="DataGrid_DoubleTapped"
+                 Name="MainDataGridBaskets"
+                 AutoGenerateColumns="False">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="ID Basket" Binding="{Binding IdBasket}" Width="100"/>
+				<DataGridTextColumn Header="User ID" Binding="{Binding UserId}" Width="100"/>
+				<DataGridTextColumn Header="Item ID" Binding="{Binding ItemsId}" Width="100"/>
+				<DataGridTextColumn Header="Counter" Binding="{Binding Counter}" Width="100"/>
+			</DataGrid.Columns>
+		</DataGrid>
+
+		<StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Horizontal" Margin="10" Spacing="10">
+			<Button Content="Add" Click="Button_Click"/>
+		</StackPanel>
+	</Grid>
+</UserControl>

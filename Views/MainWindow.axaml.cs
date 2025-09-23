@@ -44,11 +44,11 @@ namespace AvaloniaProject1pw.Views
 
         private async void Button_Click_1(object? sender, Avalonia.Interactivity.RoutedEventArgs e) //login
         {
-            var createAndChangeUserWindow = new CreateAndChangeLogin();
-            await createAndChangeUserWindow.ShowDialog(this);
+            //var createAndChangeUserWindow = new CreateAndChangeLogin();
+            //await createAndChangeUserWindow.ShowDialog(this);
 
-            var viewModel = DataContext as MainWindowViewModel;
-            viewModel.RefreshData();
+            //var viewModel = DataContext as MainWindowViewModel;
+            //viewModel.RefreshData();
         }
 
         private async void Button_Click_2(object? sender, Avalonia.Interactivity.RoutedEventArgs e) // delete
@@ -61,6 +61,19 @@ namespace AvaloniaProject1pw.Views
                 var viewModel = DataContext as MainWindowViewModel; 
                 viewModel.RefreshData(); // обновление бд
             }
+        }
+
+        private async void Button_Click_3(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            InitializeComponent();
+        }
+        private async void Button_Click_4(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            
+        }
+        private async void Button_Click_5(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+
         }
     }
 }
