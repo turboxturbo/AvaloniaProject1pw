@@ -5,16 +5,17 @@ using System;
 using System.Linq;
 using AvaloniaProject1pw.Data;
 using AvaloniaProject1pw.Models;
+using AvaloniaProject1pw;
 
-namespace TestSqlGilmi;
+namespace AvaloniaProject1pw;
 
 public partial class CreateAndChangeBasket : Window
 {
-    private readonly Basket? _editingBasket;
+    private readonly Basket? editibasket;
 
     public CreateAndChangeBasket(Basket? basketToEdit)
     {
-        _editingBasket = basketToEdit;
+        editibasket = basketToEdit;
         InitializeComponent();
         LoadUsers();
         LoadItems();
@@ -35,18 +36,18 @@ public partial class CreateAndChangeBasket : Window
 
     private void LoadBasketData()
     {
-        if (_editingBasket == null) return;
+        if (editibasket == null) return;
 
         CounterText.Text = _editingBasket.Counter;
 
         var selectedUser = UserComboBox.ItemsSource
             .OfType<User>()
-            .FirstOrDefault(u => u.IdUser == _editingBasket.UserId);
+            .FirstOrDefault(u => u.IdUser == editibasket.UserId);
         UserComboBox.SelectedItem = selectedUser;
 
         var selectedItem = ItemComboBox.ItemsSource
             .OfType<Item>()
-            .FirstOrDefault(i => i.IdItems == _editingBasket.ItemsId);
+            .FirstOrDefault(i => i.IdItems == editibasket.ItemsId);
         ItemComboBox.SelectedItem = selectedItem;
     }
 
@@ -75,10 +76,10 @@ public partial class CreateAndChangeBasket : Window
 
         try
         {
-            if (_editingBasket != null)
+            if (editibasket != null)
             {
                 var basket = App.DbContext.Baskets
-                    .FirstOrDefault(b => b.IdBasket == _editingBasket.IdBasket);
+                    .FirstOrDefault(b => b.IdBasket == editibasket.IdBasket);
 
                 if (basket != null)
                 {

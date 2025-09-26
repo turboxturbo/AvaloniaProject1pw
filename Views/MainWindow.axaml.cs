@@ -13,67 +13,22 @@ namespace AvaloniaProject1pw.Views
         {
             
             InitializeComponent();
-            DataContext = new MainWindowViewModel();
+            MainControl.Content = new User();
         }
 
-        private async void DataGrid_DoubleTapped(object? sender, Avalonia.Input.TappedEventArgs e) // change
+        private void Button_Click_1(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            var selectedUser = MainDataGridUsers.SelectedItem as User;
-
-            if (selectedUser == null) return;
-
-            UserVariableData.seletedUserInMainWindow = selectedUser;
-
-            var createAndChangeUserWindow = new CreateAndChangeUser();
-            await createAndChangeUserWindow.ShowDialog(this);
-
-            var viewModel = DataContext as MainWindowViewModel;
-            viewModel.RefreshData();
+            MainControl.Content = new User();
         }
 
-        private async void Button_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e) //add
+        private void Button_Click_2(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            UserVariableData.seletedUserInMainWindow = null;
-
-            var createAndChangeUserWindow = new CreateAndChangeUser();
-            await createAndChangeUserWindow.ShowDialog(this);
-
-            var viewModel = DataContext as MainWindowViewModel;
-            viewModel.RefreshData();
+            MainControl.Content = new Item();
         }
 
-        private async void Button_Click_1(object? sender, Avalonia.Interactivity.RoutedEventArgs e) //login
+        private void Button_Click_3(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            //var createAndChangeUserWindow = new CreateAndChangeLogin();
-            //await createAndChangeUserWindow.ShowDialog(this);
-
-            //var viewModel = DataContext as MainWindowViewModel;
-            //viewModel.RefreshData();
-        }
-
-        private async void Button_Click_2(object? sender, Avalonia.Interactivity.RoutedEventArgs e) // delete
-        {
-            var selectedUser = MainDataGridUsers.SelectedItem as User;
-            if (selectedUser != null)
-            {
-                UserVariableData.seletedUserInMainWindow = selectedUser;
-                selectedUser = null;
-                var viewModel = DataContext as MainWindowViewModel; 
-                viewModel.RefreshData(); // обновление бд
-            }
-        }
-
-        private async void Button_Click_3(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-        {
-            InitializeComponent();
-        }
-        private async void Button_Click_4(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-        {
-            
-        }
-        private async void Button_Click_5(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-        {
-
+            MainControl.Content = new Basket();
         }
     }
 }

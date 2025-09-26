@@ -31,4 +31,16 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\BasketUserControl.axaml.cs">
+      <DependentUpon>BasketUserControl.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ItemUserControl.axaml.cs">
+      <DependentUpon>ItemUserControl.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\UsersUserControl.axaml.cs">
+      <DependentUpon>UsersUserControl.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

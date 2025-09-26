@@ -4,36 +4,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="AvaloniaProject1pw.CreateAndChangeUser"
-		x:DataType="vm:MainWindowViewModel"
-		xmlns:vm="using:AvaloniaProject1pw.ViewModels"
+		
         Title="CreateAndChangeUser">
-	<Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, 60, Auto, Auto, Auto" Margin="10" ColumnDefinitions="*, *">
-		<TextBlock Text="ФИО:" Grid.Row="0"/>
-		<TextBox Grid.Row="2" Name="FullNameText"/>
-		
-		<TextBlock Text="Номер телефона:" Grid.Row="3"/>
-		<TextBox Grid.Row="4" Name="PhoneNumberText"/>
-		
-		<TextBlock Text="Описание:" Grid.Row="5"/>
-		<TextBox Grid.Row="6" Name="DescriptionText" Grid.RowSpan="2" TextWrapping="Wrap" MaxLength="100"/>
-		
-		<TextBlock Text="Пользователь:" Grid.Row="0" Grid.Column="1" Margin="10 0"/>
-		<TextBox Grid.Row="1" Grid.Column="1" Name="UserText"/>
-		
-		<TextBlock Text="Пароль" Grid.Row="3" Grid.Column="1" Margin="10 0"/>
-		<TextBox Grid.Row="4" Name="PasswordText" Grid.Column="1" Margin="10 0"/>
+	<Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,*,Auto" Margin="10" ShowGridLines="True">
+		<TextBlock Text="ФИО:" Grid.Row="0" Grid.Column="0" Margin="0,0,0,5"/>
+		<TextBox Grid.Row="1" Grid.Column="0" Name="FullNameText" Margin="0,0,0,10"
+				 Watermark="Фамилия Имя Отчество"/>
 
-		<TextBlock Text="Роль:" Grid.Row="5" Grid.Column="1" Margin="10 0"/>
-		<ComboBox ItemsSource="{Binding Roles}" Width="200" Grid.Row="6" Grid.Column="1" Name="ComboRoles" Margin="10 0">
+		<TextBlock Text="Номер телефона:" Grid.Row="2" Grid.Column="0" Margin="0,0,0,5"/>
+		<TextBox Grid.Row="3" Grid.Column="0" Name="PhoneNumberText" Margin="0,0,0,10"
+				 Watermark="Напишите номер"/>
+
+		<TextBlock Text="Описание:" Grid.Row="4" Grid.Column="0" Margin="0,0,0,5"/>
+		<TextBox Grid.Row="5" Grid.Column="0" Name="DescriptionText" Margin="0,0,0,10"
+				 Height="70"
+				 AcceptsReturn="True"
+				 TextWrapping="Wrap"
+				 Watermark="Напишите описание"/>
+
+		<TextBlock Text="Логин:" Grid.Row="0" Grid.Column="1" Margin="30,0,0,5"/>
+		<TextBox Grid.Row="1" Grid.Column="1" Name="LoginText" Margin="30,0,0,10"
+				 Watermark="Напшите логин"/>
+
+		<TextBlock Text="Пароль:" Grid.Row="2" Grid.Column="1" Margin="30,0,0,5"/>
+		<TextBox Grid.Row="3" Grid.Column="1" Name="PasswordText" Margin="30,0,0,10"
+				 PasswordChar="*"
+				 Watermark="Напшите пароль"/>
+
+		<TextBlock Text="Роль:" Grid.Row="4" Grid.Column="1" Margin="30,0,0,5"/>
+		<ComboBox Grid.Row="5" Grid.Column="1" Name="RoleComboBox" Margin="30,0,0,10">
 			<ComboBox.ItemTemplate>
-				<DataTemplate>
-					<TextBlock Text="{Binding NameRole}" FontWeight="Bold"/>
+				<DataTemplate DataType="data:Role">
+					<TextBlock Text="{Binding Name}"/>
 				</DataTemplate>
 			</ComboBox.ItemTemplate>
 		</ComboBox>
-		
-		<Button Content="Save"
-              Margin="10" Grid.Row="9" HorizontalAlignment="Right" Click="Button_Click" Grid.Column="1"/>
+
+		<Button Content="Сохранить" Grid.Row="8" Grid.ColumnSpan="2"
+                HorizontalAlignment="Right" Width="100" Margin="10"
+                Click="Button_Click"/>
 	</Grid>
 </Window>
 

@@ -1,10 +1,11 @@
+using System;
+using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using AvaloniaProject1pw.Data;
 using AvaloniaProject1pw.Models;
 using AvaloniaProject1pw.ViewModels;
-using System.Linq;
 
 namespace AvaloniaProject1pw;
 
@@ -13,48 +14,149 @@ public partial class CreateAndChangeUser : Window
     public CreateAndChangeUser()
     {
         InitializeComponent();
-        DataContext = new MainWindowViewModel();
+        LoadRoles();
+        LoadUserData();
+    }
 
+    private void LoadRoles()
+    {
+        var roles = App.DbContext.Roles.ToList();
+        RoleComboBox.ItemsSource = roles;
+    }
+
+    private void LoadUserData()
+    {
         if (UserVariableData.seletedUserInMainWindow == null) return;
-        FullNameText.Text = UserVariableData.seletedUserInMainWindow.FullName;
-        //LoginText.Text = UserVariableData.seletedUserInMainWindow.Login;
-        //PasswordText.Text = UserVariableData.seletedUserInMainWindow.Password;
-        DescriptionText.Text = UserVariableData.seletedUserInMainWindow.Description;
-        PhoneNumberText.Text = UserVariableData.seletedUserInMainWindow.PhoneNumber;
-        ComboUsers.SelectedItem = UserVariableData.seletedUserInMainWindow;
+
+        var user = UserVariableData.seletedUserInMainWindow;
+        FullNameText.Text = user.FullName;
+        PhoneNumberText.Text = user.PhoneNumber;
+        DescriptionText.Text = user.Description;
+
+        var login = App.DbContext.Logins.FirstOrDefault(l => l.IdUser == user.IdUser);
+        if (login != null)
+        {
+            LoginText.Text = login.Login1;
+            PasswordText.Text = login.Password;
+        }
+
+
+        if (user.IdRole != null)
+        {
+            var selectedRole = RoleComboBox.ItemsSource
+                .OfType<Role>()
+                .FirstOrDefault(r => r.IdRole == user.IdRole);
+            RoleComboBox.SelectedItem = selectedRole;
+        }
     }
 
     private void Button_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        var selectedUser = ComboUsers.SelectedItem as User;
-
-        if (UserVariableData.seletedUserInMainWindow != null && selectedUser != null)
+        if (string.IsNullOrWhiteSpace(FullNameText.Text))
         {
-            var idUser = UserVariableData.seletedUserInMainWindow.IdUser;
-            var thisUser = App.DbContext.Users.FirstOrDefault(x => x.IdUser == idUser);
-
-            if (thisUser == null) return;
-
-            thisUser.PhoneNumber = PhoneNumberText.Text;
-            thisUser.Description = DescriptionText.Text;
-            thisUser.FullName = FullNameText.Text;
-            App.DbContext.SaveChanges();
+            ShowError("Поле 'ФИО' обязательно для заполнения");
+            return;
         }
-        else
+
+        if (string.IsNullOrWhiteSpace(PhoneNumberText.Text))
         {
-            
-            var newUser = new User()
+            ShowError("Поле 'Номер телефона' обязательно для заполнения");
+            return;
+        }
+
+        if (string.IsNullOrWhiteSpace(LoginText.Text))
+        {
+            ShowError("Поле 'Логин' обязательно для заполнения");
+            return;
+        }
+
+        if (string.IsNullOrWhiteSpace(PasswordText.Text))
+        {
+            ShowError("Поле 'Пароль' обязательно для заполнения");
+            return;
+        }
+
+        if (RoleComboBox.SelectedItem == null)
+        {
+            ShowError("Необходимо выбрать роль");
+            return;
+        }
+
+        var selectedRole = (Role)RoleComboBox.SelectedItem;
+
+        try
+        {
+            if (UserVariableData.seletedUserInMainWindow != null)
             {
-                FullName = FullNameText.Text,
-                Description = DescriptionText.Text,
-                PhoneNumber = PhoneNumberText.Text,
-            };
-            App.DbContext.Users.Add(newUser);
-            App.DbContext.SaveChanges();
-            //newUser.IdUser 
-        }
-        
+                var user = App.DbContext.Users
+                    .FirstOrDefault(u => u.IdUser == UserVariableData.seletedUserInMainWindow.IdUser);
 
-        this.Close();
+                if (user != null)
+                {
+                    user.FullName = FullNameText.Text;
+                    user.PhoneNumber = PhoneNumberText.Text;
+                    user.Description = DescriptionText.Text;
+                    user.IdRole = selectedRole.IdRole;
+
+                    var login = App.DbContext.Logins.FirstOrDefault(l => l.IdUser == user.IdUser);
+                    if (login != null)
+                    {
+                        login.Login1 = LoginText.Text;
+                        login.Password = PasswordText.Text;
+                    }
+                    else
+                    {
+                        var newLogin = new Login()
+                        {
+                            Login1 = LoginText.Text,
+                            Password = PasswordText.Text,
+                            IdUser = user.IdUser
+                        };
+                        App.DbContext.Logins.Add(newLogin);
+                    }
+                }
+            }
+            else
+            {
+                var newUser = new User()
+                {
+                    FullName = FullNameText.Text,
+                    PhoneNumber = PhoneNumberText.Text,
+                    Description = DescriptionText.Text,
+                    IdRole = selectedRole.IdRole
+                };
+
+                App.DbContext.Users.Add(newUser);
+                App.DbContext.SaveChanges();
+
+                var newLogin = new Login()
+                {
+                    Login1 = LoginText.Text,
+                    Password = PasswordText.Text,
+                    IdUser = newUser.IdUser
+                };
+
+                App.DbContext.Logins.Add(newLogin);
+            }
+
+            App.DbContext.SaveChanges();
+            this.Close();
+        }
+        catch (Exception ex)
+        {
+            ShowError($"Ошибка: {ex.Message}");
+        }
+    }
+
+    private void ShowError(string message)
+    {
+        var messageBox = new Window
+        {
+            Title = "Ошибка",
+            Content = new TextBlock { Text = message, Margin = new Avalonia.Thickness(20) },
+            SizeToContent = SizeToContent.WidthAndHeight,
+            WindowStartupLocation = WindowStartupLocation.CenterOwner
+        };
+        messageBox.ShowDialog(this);
     }
 }

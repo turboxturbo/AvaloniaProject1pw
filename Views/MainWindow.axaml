@@ -6,29 +6,46 @@
         x:Class="AvaloniaProject1pw.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="AvaloniaProject1pw">
-	<Grid RowDefinitions="*, Auto, *" ColumnDefinitions="*, Auto, *">
-		<StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
-			<Button Content="Basket" HorizontalAlignment="Right" Click="Button_Click_3"/>
-			<Button Content="Item"   HorizontalAlignment="Left" Click="Button_Click_4"/>
-			<Button Content="User"   HorizontalAlignment="Left" Click="Button_Click_5"/>
+	<Grid RowDefinitions="Auto, *, Auto">
+		<StackPanel Grid.Row="0"
+                   Orientation="Horizontal"
+                   HorizontalAlignment="Center"
+                   Spacing="25"
+                   Margin="10"
+				   >
+			<Button Content="Пользователь"
+					x:Name="User_ClickBT"
+					Click="Button_Click_1"
+					Width="133"
+					Height="40"
+					HorizontalContentAlignment="Center"
+					VerticalContentAlignment="Center"
+					FontSize="16"
+					FontWeight="Bold"
+					/>
+
+			<Button Content="Предмет"
+					x:Name="Item_ClickBT"
+					Click="Button_Click_2"
+					Width="133"
+					Height="40"
+					HorizontalContentAlignment="Center"
+					VerticalContentAlignment="Center"
+					FontSize="16"
+					FontWeight="Bold"/>
+
+			<Button Content="Корзина"
+					x:Name="Basket_ClickBT"
+					Click="Button_Click_3"
+					Width="133"
+					Height="40"
+					HorizontalContentAlignment="Center"
+					VerticalContentAlignment="Center"
+					FontSize="16"
+					FontWeight="Bold"/>
 		</StackPanel>
-		
-		<DataGrid ItemsSource="{Binding Users}" IsReadOnly="True" DoubleTapped="DataGrid_DoubleTapped" Name="MainDataGridUsers" Grid.Row="0">
-			<DataGrid.Columns>
-				<DataGridTextColumn Header="Full Name" Binding="{Binding FullName}"/>
-				<DataGridTextColumn Header="Phone Number" Binding="{Binding PhoneNumber}"/>
-				<DataGridTextColumn Header="Desctiption" Binding="{Binding Description}"/>
-				<DataGridTextColumn Header="Login" Binding="{Binding Login1}"/>
-				<DataGridTextColumn Header="Password" Binding="{Binding Password}"/>
-				<DataGridTextColumn Header="Role" Binding="{Binding NameRole}"/>
-			</DataGrid.Columns>
-		</DataGrid>
-		
-		<Button Content="Add" Grid.Row="1" Click="Button_Click"/>
-		<StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
-			<Button Content="Login"  Click="Button_Click_1" HorizontalAlignment="Right"/>
-			<Button Content="Del"  Click="Button_Click_2" HorizontalAlignment="Left"/>
-		</StackPanel>
-		
+
+		<UserControl Name="MainControl" Grid.Row="1"/>
+
 	</Grid>
 </Window>

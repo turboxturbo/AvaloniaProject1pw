@@ -1,0 +1,26 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        d:DesignWidth="600"
+        d:DesignHeight="400"
+        x:Class="AvaloniaProject1pw.CreateAndChangeItem"
+        Title="Create Item">
+
+	<Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto,Auto,*,Auto" Margin="10">
+		<TextBlock Text="Название:" Grid.Row="0" Grid.Column="0" Margin="0,0,0,5"/>
+		<TextBox Grid.Row="1" Grid.Column="0" Name="NameText" Margin="0,0,0,10" />
+
+		<TextBlock Text="Цена:" Grid.Row="2" Grid.Column="0" Margin="0,0,0,5"/>
+		<TextBox Grid.Row="3" Grid.Column="0" Name="PriceText" Margin="0,0,0,10" />
+
+		<TextBlock Text="Описание:" Grid.Row="0" Grid.Column="1" Margin="30,0,0,5"/>
+		<TextBox Grid.Row="1" Grid.Column="1" Name="DescriptionText" Margin="30,0,0,10"
+                 Height="70" AcceptsReturn="True" TextWrapping="Wrap" />
+
+		<Button Content="Сохранить" Grid.Row="5" Grid.ColumnSpan="2"
+                HorizontalAlignment="Right" Width="100" Margin="10"
+                Click="Button_Click"/>
+	</Grid>
+</Window>
