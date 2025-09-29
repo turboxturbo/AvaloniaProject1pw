@@ -8,21 +8,21 @@ using AvaloniaProject1pw.ViewModels;
 
 namespace AvaloniaProject1pw;
 
-public partial class Basket : UserControl
+public partial class Baskets : UserControl
 {
-    public Basket()
+    public Baskets()
     {
         InitializeComponent();
         DataContext = new MainWindowViewModel();
     }
     private async void DataGrid_DoubleTapped(object? sender, Avalonia.Input.TappedEventArgs e)
     {
-        var selectedBasket = MainDataGridBaskets.SelectedItem as Data.Basket;
+        var selectedBasket = MainDataGridBaskets.SelectedItem as Basket;
         if (selectedBasket == null) return;
 
         var parent = this.VisualRoot as Window;
         if (parent == null) return;
-
+        
         var createAndChangeBasketWindow = new CreateAndChangeBasket(selectedBasket);
         await createAndChangeBasketWindow.ShowDialog(parent);
 

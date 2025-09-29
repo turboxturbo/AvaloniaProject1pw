@@ -13,22 +13,22 @@ namespace AvaloniaProject1pw.Views
         {
             
             InitializeComponent();
-            MainControl.Content = new User();
+            MainControl.Content = new Users();
         }
 
         private void Button_Click_1(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            MainControl.Content = new User();
+            MainControl.Content = new Users();
         }
 
         private void Button_Click_2(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            MainControl.Content = new Item();
+            MainControl.Content = new Items();
         }
 
         private void Button_Click_3(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            MainControl.Content = new Basket();
+            MainControl.Content = new Baskets();
         }
     }
 }

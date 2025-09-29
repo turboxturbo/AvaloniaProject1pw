@@ -33,11 +33,15 @@ namespace AvaloniaProject1pw.ViewModels
         }
         public void RefreshBasketsData()
         {
-            var basketsFromDb = App.DbContext.Baskets
-                .Include(b => b.IdUser)
-                .Include(b => b.IdItem)
-                .ToList();
-            Basket = basketsFromDb;
+            //var basketsFromDb = App.DbContext.Baskets
+            //    .Include(b => b.IdUser)
+            //    .Include(b => b.IdItem)
+            //    .ToList();
+            //Basket = basketsFromDb;
+            //OnPropertyChanged(nameof(Basket));
+
+            var basketFromDb = App.DbContext.Baskets.ToList();
+            Basket = basketFromDb;
             OnPropertyChanged(nameof(Basket));
         }
     }

@@ -5,19 +5,21 @@ using System.Linq;
 using AvaloniaProject1pw.Data;
 using AvaloniaProject1pw.Models;
 using AvaloniaProject1pw.ViewModels;
+using System;
 
 namespace AvaloniaProject1pw;
 
-public partial class Item : UserControl
+public partial class Items : UserControl
 {
-    public Item()
+    public Items()
     {
         InitializeComponent();
         DataContext = new MainWindowViewModel();
     }
+
     private async void DataGrid_DoubleTapped(object? sender, Avalonia.Input.TappedEventArgs e)
     {
-        var selectedItem = MainDataGridItems.SelectedItem as Data.Item;
+        var selectedItem = MainDataGridItems.SelectedItem as Item;
         if (selectedItem == null) return;
 
         var parent = this.VisualRoot as Window;

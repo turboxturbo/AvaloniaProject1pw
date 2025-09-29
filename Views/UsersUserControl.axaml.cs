@@ -18,7 +18,6 @@ public partial class Users : UserControl
     private async void DataGrid_DoubleTapped(object? sender, Avalonia.Input.TappedEventArgs e)
     {
         var selectedUser = MainDataGridUsers.SelectedItem as User;
-
         if (selectedUser == null) return;
 
         UserVariableData.seletedUserInMainWindow = selectedUser;
@@ -30,7 +29,6 @@ public partial class Users : UserControl
 
         var viewModel = DataContext as MainWindowViewModel;
         viewModel.RefreshData();
-
     }
 
     private async void Button_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
