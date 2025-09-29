@@ -11,9 +11,9 @@ namespace AvaloniaProject1pw;
 
 public partial class CreateAndChangeBasket : Window
 {
-    private readonly Basket? editibasket;
+    private readonly Data.Basket? editibasket;
 
-    public CreateAndChangeBasket(Basket? basketToEdit)
+    public CreateAndChangeBasket(Data.Basket? basketToEdit)
     {
         editibasket = basketToEdit;
         InitializeComponent();
@@ -38,16 +38,16 @@ public partial class CreateAndChangeBasket : Window
     {
         if (editibasket == null) return;
 
-        CounterText.Text = _editingBasket.Counter;
+        //CounterText.Text = editibasket.Counter;
 
         var selectedUser = UserComboBox.ItemsSource
             .OfType<User>()
-            .FirstOrDefault(u => u.IdUser == editibasket.UserId);
+            .FirstOrDefault(u => u.IdUser == editibasket.IdUser);
         UserComboBox.SelectedItem = selectedUser;
 
         var selectedItem = ItemComboBox.ItemsSource
-            .OfType<Item>()
-            .FirstOrDefault(i => i.IdItems == editibasket.ItemsId);
+            .OfType<Data.Item>()
+            .FirstOrDefault(i => i.IdItem == editibasket.IdItem);
         ItemComboBox.SelectedItem = selectedItem;
     }
 
@@ -72,7 +72,7 @@ public partial class CreateAndChangeBasket : Window
         }
 
         var selectedUser = (User)UserComboBox.SelectedItem;
-        var selectedItem = (Item)ItemComboBox.SelectedItem;
+        var selectedItem = (Data.Item)ItemComboBox.SelectedItem;
 
         try
         {
@@ -83,18 +83,18 @@ public partial class CreateAndChangeBasket : Window
 
                 if (basket != null)
                 {
-                    basket.UserId = selectedUser.IdUser;
-                    basket.ItemsId = selectedItem.IdItems;
-                    basket.Counter = CounterText.Text;
+                    basket.IdUser = selectedUser.IdUser;
+                    basket.IdItem = selectedItem.IdItem;
+                    basket.Counter = int.Parse(CounterText.Text);
                 }
             }
             else
             {
-                var newBasket = new Basket()
+                var newBasket = new Data.Basket()
                 {
-                    UserId = selectedUser.IdUser,
-                    ItemsId = selectedItem.IdItems,
-                    Counter = CounterText.Text
+                    IdUser = selectedUser.IdUser,
+                    IdItem = selectedItem.IdItem,
+                    Counter = int.Parse(CounterText.Text),
                 };
                 App.DbContext.Baskets.Add(newBasket);
             }

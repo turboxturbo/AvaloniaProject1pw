@@ -8,8 +8,8 @@ namespace AvaloniaProject1pw.ViewModels
     public partial class MainWindowViewModel : ViewModelBase
     {
         public List<User> Users { get; set; }
-        public List<User> Items { get; set; }
-        public List<User> Basket { get; set; }
+        public List<Data.Item> Items { get; set; }
+        public List<Data.Basket> Basket { get; set; }
 
         public MainWindowViewModel()
         {
@@ -34,11 +34,11 @@ namespace AvaloniaProject1pw.ViewModels
         public void RefreshBasketsData()
         {
             var basketsFromDb = App.DbContext.Baskets
-                .Include(b => b.User)
-                .Include(b => b.Items)
+                .Include(b => b.IdUser)
+                .Include(b => b.IdItem)
                 .ToList();
-            Baskets = basketsFromDb;
-            OnPropertyChanged(nameof(Baskets));
+            Basket = basketsFromDb;
+            OnPropertyChanged(nameof(Basket));
         }
     }
 }

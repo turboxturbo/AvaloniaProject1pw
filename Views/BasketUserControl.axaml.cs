@@ -17,7 +17,7 @@ public partial class Basket : UserControl
     }
     private async void DataGrid_DoubleTapped(object? sender, Avalonia.Input.TappedEventArgs e)
     {
-        var selectedBasket = MainDataGridBaskets.SelectedItem as Basket;
+        var selectedBasket = MainDataGridBaskets.SelectedItem as Data.Basket;
         if (selectedBasket == null) return;
 
         var parent = this.VisualRoot as Window;

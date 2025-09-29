@@ -54,31 +54,31 @@ public partial class CreateAndChangeUser : Window
     {
         if (string.IsNullOrWhiteSpace(FullNameText.Text))
         {
-            ShowError("Поле 'ФИО' обязательно для заполнения");
+            ShowError("Поле не должно быть пустым");
             return;
         }
 
         if (string.IsNullOrWhiteSpace(PhoneNumberText.Text))
         {
-            ShowError("Поле 'Номер телефона' обязательно для заполнения");
+            ShowError("Поле не должно быть пустым");
             return;
         }
 
         if (string.IsNullOrWhiteSpace(LoginText.Text))
         {
-            ShowError("Поле 'Логин' обязательно для заполнения");
+            ShowError("Поле не должно быть пустым");
             return;
         }
 
         if (string.IsNullOrWhiteSpace(PasswordText.Text))
         {
-            ShowError("Поле 'Пароль' обязательно для заполнения");
+            ShowError("Поле не должно быть пустым");
             return;
         }
 
         if (RoleComboBox.SelectedItem == null)
         {
-            ShowError("Необходимо выбрать роль");
+            ShowError("Поле не должно быть пустым");
             return;
         }
 

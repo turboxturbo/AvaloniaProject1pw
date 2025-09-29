@@ -11,6 +11,8 @@ public partial class Basket
 
     public int? IdUser { get; set; }
 
+    public int? Counter { get; set; }
+
     public virtual Item? IdItemNavigation { get; set; }
 
     public virtual User? IdUserNavigation { get; set; }

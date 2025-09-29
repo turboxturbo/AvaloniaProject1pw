@@ -17,7 +17,7 @@ public partial class Item : UserControl
     }
     private async void DataGrid_DoubleTapped(object? sender, Avalonia.Input.TappedEventArgs e)
     {
-        var selectedItem = MainDataGridItems.SelectedItem as Item;
+        var selectedItem = MainDataGridItems.SelectedItem as Data.Item;
         if (selectedItem == null) return;
 
         var parent = this.VisualRoot as Window;
@@ -27,7 +27,7 @@ public partial class Item : UserControl
         await createAndChangeItemWindow.ShowDialog(parent);
 
         var viewModel = DataContext as MainWindowViewModel;
-        viewModel?.RefreshItemsData();
+        viewModel?.RefreshDataItems();
     }
 
     private async void Button_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -38,7 +38,7 @@ public partial class Item : UserControl
             var createAndChangeItemWindow = new CreateAndChangeItem(null);
             await createAndChangeItemWindow.ShowDialog(parent);
             var viewModel = DataContext as MainWindowViewModel;
-            viewModel?.RefreshItemsData();
+            viewModel?.RefreshDataItems();
         }
     }
 }

@@ -3,6 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+		xmlns:data="clr-namespace:AvaloniaProject1pw.Data"
         x:Class="AvaloniaProject1pw.CreateAndChangeUser"
 		
         Title="CreateAndChangeUser">
@@ -35,7 +36,7 @@
 		<ComboBox Grid.Row="5" Grid.Column="1" Name="RoleComboBox" Margin="30,0,0,10">
 			<ComboBox.ItemTemplate>
 				<DataTemplate DataType="data:Role">
-					<TextBlock Text="{Binding Name}"/>
+					<TextBlock Text="{Binding NameRole}"/>
 				</DataTemplate>
 			</ComboBox.ItemTemplate>
 		</ComboBox>

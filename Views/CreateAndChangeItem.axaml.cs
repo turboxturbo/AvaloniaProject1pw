@@ -5,15 +5,16 @@ using System;
 using System.Linq;
 using AvaloniaProject1pw.Data;
 using AvaloniaProject1pw.Models;
-using AvaloniaProject1pw;
+using AvaloniaProject1pw.Data;
+using System.Diagnostics.Metrics;
 
 namespace AvaloniaProject1pw;
 
 public partial class CreateAndChangeItem : Window
 {
-    private readonly Item? edititem;
+    private readonly Data.Item? edititem;
 
-    public CreateAndChangeItem(Item? itemToEdit)
+    public CreateAndChangeItem(Data.Item? itemToEdit)
     {
         edititem = itemToEdit;
         InitializeComponent();
@@ -25,21 +26,22 @@ public partial class CreateAndChangeItem : Window
         if (edititem == null) return;
 
         NameText.Text = edititem.NameItem;
-        PriceText.Text = edititem.Price;
+        PriceText.Text = edititem.Price.ToString();
         DescriptionText.Text = edititem.Description;
+        
     }
 
     private void Button_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         if (string.IsNullOrWhiteSpace(NameText.Text))
         {
-            ShowError("Поле 'Name' обязательно для заполнения");
+            ShowError("Поле обязательно для заполнения");
             return;
         }
 
         if (string.IsNullOrWhiteSpace(PriceText.Text))
         {
-            ShowError("Поле 'Price' обязательно для заполнения");
+            ShowError("Поле обязательно для заполнения");
             return;
         }
 
@@ -48,21 +50,21 @@ public partial class CreateAndChangeItem : Window
             if (edititem != null)
             {
                 var item = App.DbContext.Items
-                    .FirstOrDefault(i => i.IdItems == edititem.IdItems);
+                    .FirstOrDefault(i => i.IdItem == edititem.IdItem);
 
                 if (item != null)
                 {
-                    item.Name = NameText.Text;
-                    item.Price = PriceText.Text;
-                    item.Opisanie = DescriptionText.Text;
+                    item.NameItem = NameText.Text;
+                    item.Price = int.Parse(PriceText.Text);
+                    item.Description = DescriptionText.Text;
                 }
             }
             else
             {
-                var newItem = new Item()
+                var newItem = new Data.Item()
                 {
                     NameItem = NameText.Text,
-                    Price = PriceText.Text,
+                    Price = int.Parse(PriceText.Text),
                     Description = DescriptionText.Text
                 };
                 App.DbContext.Items.Add(newItem);
