@@ -38,7 +38,7 @@ public partial class CreateAndChangeBasket : Window
     {
         if (editibasket == null) return;
 
-        //CounterText.Text = editibasket.Counter;
+        CounterText.Text = editibasket.Counter.ToString();
 
         var selectedUser = UserComboBox.ItemsSource
             .OfType<User>()

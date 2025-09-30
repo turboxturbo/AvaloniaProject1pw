@@ -12,13 +12,14 @@
 	<DataGrid Grid.Row="0"
 			 ItemsSource="{Binding Users}"
 			 IsReadOnly="True"
+			 SelectedItem="{Binding SelectedUsers}"
 			 DoubleTapped="DataGrid_DoubleTapped"
 			 Name="MainDataGridUsers">
 		<DataGrid.Columns>
 			<DataGridTextColumn Header="Full Name" Binding="{Binding FullName}"/>
 			<DataGridTextColumn Header="Phone Number" Binding="{Binding PhoneNumber}"/>
-			<DataGridTextColumn Header="Description" Binding="{Binding Descipition}"/>
-			<DataGridTextColumn Header="Role" Binding="{Binding Roles.NameRole}"/>
+			<DataGridTextColumn Header="Description" Binding="{Binding Description}"/>
+			<DataGridTextColumn Header="Role" Binding="{Binding IdRoleNavigation.NameRole}"/>
 		</DataGrid.Columns>
 	</DataGrid>
 
@@ -28,6 +29,7 @@
 			   Margin="10"
 			   Spacing="10">
 		<Button Content="Добавить" Click="Button_Click"/>
+		<Button Content="Удалить" Click="Button_Click_1"/>
 	</StackPanel>
 
 	</Grid>

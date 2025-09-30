@@ -1,7 +1,8 @@
+using System;
+using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using System.Linq;
 using AvaloniaProject1pw.Data;
 using AvaloniaProject1pw.Models;
 using AvaloniaProject1pw.ViewModels;
@@ -42,5 +43,11 @@ public partial class Users : UserControl
 
         var viewModel = DataContext as MainWindowViewModel;
         viewModel.RefreshData();
+    }
+
+    private async void Button_Click_1(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        
+        
     }
 }

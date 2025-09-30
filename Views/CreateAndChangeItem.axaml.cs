@@ -5,7 +5,6 @@ using System;
 using System.Linq;
 using AvaloniaProject1pw.Data;
 using AvaloniaProject1pw.Models;
-using AvaloniaProject1pw.Data;
 using System.Diagnostics.Metrics;
 
 namespace AvaloniaProject1pw;
@@ -49,14 +48,13 @@ public partial class CreateAndChangeItem : Window
         {
             if (edititem != null)
             {
-                var item = App.DbContext.Items
-                    .FirstOrDefault(i => i.IdItem == edititem.IdItem);
+                
 
-                if (item != null)
+                if (edititem != null)
                 {
-                    item.NameItem = NameText.Text;
-                    item.Price = int.Parse(PriceText.Text);
-                    item.Description = DescriptionText.Text;
+                    edititem.NameItem = NameText.Text;
+                    edititem.Price = int.Parse(PriceText.Text);
+                    edititem.Description = DescriptionText.Text;
                 }
             }
             else
