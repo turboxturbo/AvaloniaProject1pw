@@ -11,9 +11,9 @@ namespace AvaloniaProject1pw;
 
 public partial class CreateAndChangeBasket : Window
 {
-    private readonly Data.Basket? editibasket;
+    private readonly Basket? editibasket;
 
-    public CreateAndChangeBasket(Data.Basket? basketToEdit)
+    public CreateAndChangeBasket(Basket? basketToEdit)
     {
         editibasket = basketToEdit;
         InitializeComponent();
@@ -46,7 +46,7 @@ public partial class CreateAndChangeBasket : Window
         UserComboBox.SelectedItem = selectedUser;
 
         var selectedItem = ItemComboBox.ItemsSource
-            .OfType<Data.Item>()
+            .OfType<Item>()
             .FirstOrDefault(i => i.IdItem == editibasket.IdItem);
         ItemComboBox.SelectedItem = selectedItem;
     }
@@ -72,7 +72,7 @@ public partial class CreateAndChangeBasket : Window
         }
 
         var selectedUser = (User)UserComboBox.SelectedItem;
-        var selectedItem = (Data.Item)ItemComboBox.SelectedItem;
+        var selectedItem = (Item)ItemComboBox.SelectedItem;
 
         try
         {

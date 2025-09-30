@@ -4,14 +4,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:data="clr-namespace:AvaloniaProject1pw.Data"
         mc:Ignorable="d"
-        d:DesignWidth="600"
-        d:DesignHeight="400"
+        d:DesignWidth="200"
+        d:DesignHeight="200"
         x:Class="AvaloniaProject1pw.CreateAndChangeBasket"
         Title="Create Basket">
 
 	<Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto,Auto,*,Auto" Margin="10" >
 		<TextBlock Text="Пользователи:" Grid.Row="0" Grid.Column="0" Margin="0,0,0,5"/>
-		<ComboBox Grid.Row="1" Grid.Column="0" Name="UserComboBox" Margin="0,0,0,10">
+		<ComboBox Grid.Row="1" Grid.Column="0" Width="400" Name="UserComboBox" Margin="0,0,0,10">
 			<ComboBox.ItemTemplate>
 				<DataTemplate DataType="data:User">
 					<TextBlock Text="{Binding FullName}"/>
@@ -20,7 +20,7 @@
 		</ComboBox>
 
 		<TextBlock Text="Предмет:" Grid.Row="2" Grid.Column="0" Margin="0,0,0,5"/>
-		<ComboBox Grid.Row="3" Grid.Column="0" Name="ItemComboBox" Margin="0,0,0,10">
+		<ComboBox Grid.Row="3" Grid.Column="0" Name="ItemComboBox" Width="400" Margin="0,0,0,10">
 			<ComboBox.ItemTemplate>
 				<DataTemplate DataType="data:Item">
 					<TextBlock Text="{Binding NameItem}"/>

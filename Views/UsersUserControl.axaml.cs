@@ -23,7 +23,7 @@ public partial class Users : UserControl
 
         UserVariableData.seletedUserInMainWindow = selectedUser;
 
-        var parent = this.VisualRoot as Window;
+        var parent = VisualRoot as Window;
         if (parent == null) return;
         var createAndChangeUserWindow = new CreateAndChangeUser();
         await createAndChangeUserWindow.ShowDialog(parent);
@@ -32,12 +32,12 @@ public partial class Users : UserControl
         viewModel.RefreshData();
     }
 
-    private async void Button_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    private async void Button_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e) // add
     {
         UserVariableData.seletedUserInMainWindow = null;
-
+        
         var createAndChangeUserWindow = new CreateAndChangeUser();
-        var parent = this.VisualRoot as Window;
+        var parent = VisualRoot as Window;
 
         await createAndChangeUserWindow.ShowDialog(parent);
 
@@ -45,9 +45,9 @@ public partial class Users : UserControl
         viewModel.RefreshData();
     }
 
-    private async void Button_Click_1(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    private void Button_Click_1(object? sender, Avalonia.Interactivity.RoutedEventArgs e)  // del 
     {
-        
-        
+        var viewModel = DataContext as MainWindowViewModel;
+        viewModel.RefreshData();
     }
 }

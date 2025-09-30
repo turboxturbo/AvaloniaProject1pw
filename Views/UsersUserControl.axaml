@@ -9,12 +9,7 @@
 	<Grid RowDefinitions="*,Auto"
 	  ColumnDefinitions="*">
 
-	<DataGrid Grid.Row="0"
-			 ItemsSource="{Binding Users}"
-			 IsReadOnly="True"
-			 SelectedItem="{Binding SelectedUsers}"
-			 DoubleTapped="DataGrid_DoubleTapped"
-			 Name="MainDataGridUsers">
+	<DataGrid Grid.Row="0" ItemsSource="{Binding Users}" IsReadOnly="True" SelectedItem="{Binding SelectedUsers}" DoubleTapped="DataGrid_DoubleTapped" Name="MainDataGridUsers">
 		<DataGrid.Columns>
 			<DataGridTextColumn Header="Full Name" Binding="{Binding FullName}"/>
 			<DataGridTextColumn Header="Phone Number" Binding="{Binding PhoneNumber}"/>
@@ -23,11 +18,7 @@
 		</DataGrid.Columns>
 	</DataGrid>
 
-	<StackPanel Grid.Row="1"
-			   HorizontalAlignment="Left"
-			   Orientation="Horizontal"
-			   Margin="10"
-			   Spacing="10">
+	<StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Horizontal"  Margin="10" Spacing="10">
 		<Button Content="Добавить" Click="Button_Click"/>
 		<Button Content="Удалить" Click="Button_Click_1"/>
 	</StackPanel>

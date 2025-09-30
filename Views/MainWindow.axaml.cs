@@ -11,7 +11,6 @@ namespace AvaloniaProject1pw.Views
     {
         public MainWindow()
         {
-            
             InitializeComponent();
             MainControl.Content = new Users();
         }

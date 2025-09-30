@@ -11,9 +11,9 @@ namespace AvaloniaProject1pw;
 
 public partial class CreateAndChangeItem : Window
 {
-    private readonly Data.Item? edititem;
+    private readonly Item? edititem;
 
-    public CreateAndChangeItem(Data.Item? itemToEdit)
+    public CreateAndChangeItem(Item? itemToEdit)
     {
         edititem = itemToEdit;
         InitializeComponent();
@@ -48,14 +48,9 @@ public partial class CreateAndChangeItem : Window
         {
             if (edititem != null)
             {
-                
-
-                if (edititem != null)
-                {
-                    edititem.NameItem = NameText.Text;
-                    edititem.Price = int.Parse(PriceText.Text);
-                    edititem.Description = DescriptionText.Text;
-                }
+                edititem.NameItem = NameText.Text;
+                edititem.Price = int.Parse(PriceText.Text);
+                edititem.Description = DescriptionText.Text;
             }
             else
             {

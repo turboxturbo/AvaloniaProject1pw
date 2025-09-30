@@ -20,9 +20,8 @@
 					Height="40"
 					HorizontalContentAlignment="Center"
 					VerticalContentAlignment="Center"
-					FontSize="16"
-					FontWeight="Bold"
-					/>
+					FontSize="12"
+					FontWeight="Bold"/>
 
 			<Button Content="Предмет"
 					x:Name="Item_ClickBT"
@@ -31,7 +30,7 @@
 					Height="40"
 					HorizontalContentAlignment="Center"
 					VerticalContentAlignment="Center"
-					FontSize="16"
+					FontSize="12"
 					FontWeight="Bold"/>
 
 			<Button Content="Корзина"
@@ -41,7 +40,7 @@
 					Height="40"
 					HorizontalContentAlignment="Center"
 					VerticalContentAlignment="Center"
-					FontSize="16"
+					FontSize="12"
 					FontWeight="Bold"/>
 		</StackPanel>
 
